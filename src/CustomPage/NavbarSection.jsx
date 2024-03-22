@@ -3,10 +3,15 @@ import {
   Typography,
   IconButton,
   MobileNav,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 // import logo from "../assets/Image/wevloper-tp-150.png";
 import { FaPhone } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const NavbarSection = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -25,11 +30,32 @@ const NavbarSection = () => {
         scrolling | openNav ? "text-black" : "text-white font-bold "
       }`}
     >
-      <Typography as="li" className="p-1  text-lg cursor-pointer">
-        <a href="#" className="flex items-center cursor-pointer">
-          Pages
-        </a>
-      </Typography>
+      <Menu
+        animate={{
+          mount: { y: 0 },
+          unmount: { y: 25 },
+        }}
+      >
+        <MenuHandler>
+          <Typography className="flex items-center  text-lg cursor-pointer">
+            Service
+          </Typography>
+        </MenuHandler>
+        <MenuList className="bg-[#019031] border-none text-white">
+          <MenuItem className="hover:bg-[#019031]">
+            <Link to={"/webDev"} className="text-md">
+              WEBSITE DEVELOPMENT
+            </Link>
+          </MenuItem>
+
+          <MenuItem className="hover:bg-[#019031]">UX/UI DESIGN</MenuItem>
+          <MenuItem className="hover:bg-[#019031]">Digital Marketing</MenuItem>
+          <MenuItem className="hover:bg-[#019031]">
+            Business Development
+          </MenuItem>
+        </MenuList>
+      </Menu>
+
       <Typography as="li" className="p-1 ">
         <a href="#" className="flex items-center  text-lg">
           Account
